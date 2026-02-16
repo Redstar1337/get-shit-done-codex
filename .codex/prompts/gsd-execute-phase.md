@@ -29,11 +29,16 @@ Execute all plans in a phase with wave-based parallelization
 ## Input contract
 - The command argument is authoritative.
 - If user runs `gsd-execute-phase 28`, execute phase `28`. Do not auto-discover a different phase.
-- Parse flags only from the same argument string (`--gaps-only`, `--auto`).
-- If phase argument is missing or invalid, stop and ask for a valid phase number.
+- Parse phase from either:
+  - the explicit command argument tail, or
+  - the latest user message (for example: "execute phase 28").
+- Accept first token matching `^\d+(\.\d+)?$` as the phase number.
+- Parse flags `--gaps-only` and `--auto` from the same input text when present.
+- Do not claim "phase missing" when the latest user input already contains a valid phase token.
+- Only ask for input if no valid phase token is found anywhere in the latest user request.
 
 ## Execution
-1. Parse "<phase-number> [--gaps-only] [--auto]" from the command argument string.
+1. Parse "<phase-number> [--gaps-only] [--auto]" from command argument text, or extract from the latest user message.
 2. Treat parsed phase as the execution target and keep it unchanged for all downstream steps.
 3. Run init with the parsed phase:
 node <gsd-tools-path> init execute-phase <phase> --raw
