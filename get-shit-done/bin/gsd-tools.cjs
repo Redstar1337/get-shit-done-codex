@@ -5117,7 +5117,6 @@ async function main() {
       }
       break;
     }
-
     case 'history-digest': {
       cmdHistoryDigest(cwd, raw);
       break;
