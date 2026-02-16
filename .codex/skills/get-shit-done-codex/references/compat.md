@@ -17,6 +17,7 @@
 ## Subagent mapping
 - `subagent_type=gsd-*` maps to equivalent role contract in `.claude/agents/gsd-*.md`.
 - Unspecified `subagent_type` values default to command-context Codex agent behavior.
+- Do not pass `agent_type=gsd-*` to `spawn_agent`. Codex only accepts `default`, `explorer`, or `worker` (or omit `agent_type`).
 
 ## Required GSD subagents
 - `gsd-project-researcher`

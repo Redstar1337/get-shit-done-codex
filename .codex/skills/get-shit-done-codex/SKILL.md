@@ -29,6 +29,7 @@ Use this skill to run `gsd-*` prompts under `Codex` while preserving upstream GS
 - Spawn only when the upstream workflow explicitly defines a `Task(...)` role.
 - For each spawned subagent:
   - Start with `spawn_agent` and provide the role source from `.claude/agents/gsd-*.md`.
+  - Do not set `agent_type` to a GSD role. Codex only accepts `default`, `explorer`, or `worker` (or omit `agent_type`).
   - Wait for completion before proceeding: `wait`.
   - Explicitly close the agent after it finishes (`close_agent`) to release resources.
 - Keep prompt-level sequencing intact; do not continue to subsequent steps until waiting + closure are complete.
