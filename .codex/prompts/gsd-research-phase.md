@@ -23,6 +23,13 @@ node .claude/get-shit-done/bin/gsd-tools.js ...
 - Spawn only when the upstream workflow defines an agent role.
 - Use `.claude/agents/gsd-*.md` as role context for each spawned agent.
 - Do not advance workflow steps until wait and close complete.
+## Update check
+- Run:
+  $update = node .claude/get-shit-done/bin/gsd-tools.cjs update check --raw | ConvertFrom-Json
+- If $update.update_available is true, surface:
+  "Update available: $($update.installed) -> $($update.latest). Run /gsd:update or re-run npx gsd-codex-cli@latest."
+
+
 ## Execution
 1. Parse "[phase]" from the user input.
 2. Run init:

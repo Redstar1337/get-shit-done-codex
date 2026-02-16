@@ -56,6 +56,9 @@
  * Todos:
  *   todo complete <filename>           Move todo from pending to completed
  *
+ * Update:
+ *   update check                       Check npm for newer GSD version
+ *
  * Scaffolding:
  *   scaffold context --phase <N>       Create CONTEXT.md template
  *   scaffold uat --phase <N>           Create UAT.md template
@@ -121,6 +124,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const { execSync } = require('child_process');
 
 // ─── Model Profile Table ─────────────────────────────────────────────────────
@@ -578,6 +582,47 @@ function cmdVerifyPathExists(cwd, targetPath, raw) {
     const result = { exists: false, type: null };
     output(result, raw, 'false');
   }
+}
+
+function cmdUpdateCheck(cwd, raw) {
+  const homeDir = os.homedir();
+  const cacheDir = path.join(homeDir, '.claude', 'cache');
+  const cacheFile = path.join(cacheDir, 'gsd-update-check.json');
+  const projectVersionFile = path.join(cwd, '.claude', 'get-shit-done', 'VERSION');
+  const globalVersionFile = path.join(homeDir, '.claude', 'get-shit-done', 'VERSION');
+
+  let installed = '0.0.0';
+  try {
+    if (fs.existsSync(projectVersionFile)) {
+      installed = fs.readFileSync(projectVersionFile, 'utf8').trim();
+    } else if (fs.existsSync(globalVersionFile)) {
+      installed = fs.readFileSync(globalVersionFile, 'utf8').trim();
+    }
+  } catch {}
+
+  let latest = null;
+  try {
+    latest = execSync('npm view gsd-codex-cli version', { encoding: 'utf8', timeout: 10000, windowsHide: true }).trim();
+  } catch {}
+  if (!latest) {
+    try {
+      latest = execSync('npm view get-shit-done-cc version', { encoding: 'utf8', timeout: 10000, windowsHide: true }).trim();
+    } catch {}
+  }
+
+  const result = {
+    update_available: !!(latest && installed && latest !== installed),
+    installed,
+    latest: latest || 'unknown',
+    checked: Math.floor(Date.now() / 1000),
+  };
+
+  try {
+    fs.mkdirSync(cacheDir, { recursive: true });
+    fs.writeFileSync(cacheFile, JSON.stringify(result));
+  } catch {}
+
+  output(result, raw);
 }
 
 function cmdConfigEnsureSection(cwd, raw) {
@@ -5060,6 +5105,16 @@ async function main() {
 
     case 'config-get': {
       cmdConfigGet(cwd, args[1], raw);
+      break;
+    }
+
+    case 'update': {
+      const subcommand = args[1];
+      if (subcommand === 'check') {
+        cmdUpdateCheck(cwd, raw);
+      } else {
+        error('Unknown update subcommand. Available: check');
+      }
       break;
     }
 
