@@ -25,27 +25,29 @@ Execute all plans in a phase with wave-based parallelization
 - Use `.claude/agents/gsd-*.md` as role context for each spawned agent.
 - Do not advance workflow steps until wait and close complete.
 
-## Update check
-- Best-effort only; do not fail if offline.
-- Check installed Codex fork version from `.codex/gsd/VERSION` (or `~/.codex/gsd/VERSION`).
-- Check latest published version with `npm view gsd-codex-cli version`.
-- If versions differ, surface: "Update available: <installed> -> <latest>. Next: gsd-update (Codex) / /gsd:update (Claude) or re-run npx gsd-codex-cli@latest."
+## Input contract
+- The command argument is authoritative.
+- If user runs `gsd-execute-phase 28`, execute phase `28`. Do not auto-discover a different phase.
+- Parse flags only from the same argument string (`--gaps-only`, `--auto`).
+- If phase argument is missing or invalid, stop and ask for a valid phase number.
 
 ## Execution
-1. Parse "<phase-number> [--gaps-only]" from the user input.
-2. Run init:
-node <gsd-tools-path> init execute-phase [phase] --raw
-
-3. Load .claude/get-shit-done/workflows/execute-phase.md and execute it step-by-step.
-4. Translate each Task(...) in workflow into:
+1. Parse "<phase-number> [--gaps-only] [--auto]" from the command argument string.
+2. Treat parsed phase as the execution target and keep it unchanged for all downstream steps.
+3. Run init with the parsed phase:
+node <gsd-tools-path> init execute-phase <phase> --raw
+4. If `--gaps-only` is present, apply gap-closure filtering exactly as defined in the upstream workflow.
+5. If `--auto` is present, preserve auto-advance behavior from the upstream workflow.
+6. Load .claude/get-shit-done/workflows/execute-phase.md and execute it step-by-step.
+7. Translate each Task(...) in workflow into:
    - spawn_agent with the matching role file context from .claude/agents/.
    - wait for each spawned agent and apply returned output before moving forward.
-5. Preserve all gates and routing from upstream workflow.
-6. Preserve commit behavior using 
+8. Preserve all gates and routing from upstream workflow.
+9. Preserve commit behavior using
 node <gsd-tools-path> commit "message" --files ....
-7. If commit preflight fails (no git / no commit flag), proceed in read-only mode and report clearly.
+10. If commit preflight fails (no git / no commit flag), proceed in read-only mode and report clearly.
 
 ## Completion output
 - Summarize key artifacts created/updated.
-- Next recommended command: `gsd-verify-work [phase]` (Codex) / `/gsd:verify-work [phase]` (Claude)
+- Next recommended command: `gsd-verify-work <phase>` (Codex) / `/gsd:verify-work <phase>` (Claude)
 - Never recommend internal `node ... gsd-tools ...` commands to the user.
