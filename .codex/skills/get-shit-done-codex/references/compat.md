@@ -13,6 +13,8 @@
 - Use `node .claude/get-shit-done/bin/gsd-tools.js ...`.
 - Keep `--raw` when upstream workflow uses it.
 - Parse JSON by `ConvertFrom-Json`.
+- Do not assign `node <path> <args>` into a single PowerShell string and invoke `& $cmd`.
+- Use direct invocation: `node <path> ...` or `& node <path> ...`.
 
 ## Subagent mapping
 - `subagent_type=gsd-*` maps to equivalent role contract in `.claude/agents/gsd-*.md`.
