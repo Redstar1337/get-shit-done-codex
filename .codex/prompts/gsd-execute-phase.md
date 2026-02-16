@@ -3,6 +3,8 @@ description: Execute all plans in a phase with wave-based parallelization
 argument-hint: "<phase-number> [--gaps-only]"
 ---
 
+$ARGUMENTS
+
 ## Objective
 Execute all plans in a phase with wave-based parallelization
 
@@ -15,7 +17,7 @@ Execute all plans in a phase with wave-based parallelization
   node ~/.claude/get-shit-done/bin/gsd-tools.js ...
 - If `.js` is unavailable, use the same path with `.cjs`.
 - Run engine commands through PowerShell.
-- Do not set `node <path> ...` as one string variable and invoke `& $var`; run direct `node <path> ...` or `& node <path> ...`.
+- Do not set `node <path> ...` as one string variable and invoke `& <cmd_var>`; run direct `node <path> ...` or `& node <path> ...`.
 - Parse JSON with ConvertFrom-Json; parse key/value output when workflow uses KEY=value raw mode.
 - No jq / bash-only constructs.
 - Accept natural-language command input; do not require an exact literal argument template.
@@ -34,7 +36,7 @@ Execute all plans in a phase with wave-based parallelization
 - Parse phase from either:
   - the explicit command argument tail, or
   - the latest user message (for example: "execute phase 28").
-- Accept first token matching `^\d+(\.\d+)?$` as the phase number.
+- Accept the first numeric token as phase number (integer or decimal, e.g., 30 or 30.1).
 - Parse flags `--gaps-only` and `--auto` from the same input text when present.
 - Do not claim "phase missing" when the latest user input already contains a valid phase token.
 - Only ask for input if no valid phase token is found anywhere in the latest user request.

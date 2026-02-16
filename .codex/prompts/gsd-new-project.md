@@ -3,6 +3,8 @@ description: Initialize a new project with deep context gathering and PROJECT.md
 argument-hint: "[--auto]"
 ---
 
+$ARGUMENTS
+
 ## Objective
 Initialize a new project with deep context gathering and PROJECT.md
 
@@ -15,7 +17,7 @@ Initialize a new project with deep context gathering and PROJECT.md
   node ~/.claude/get-shit-done/bin/gsd-tools.js ...
 - If `.js` is unavailable, use the same path with `.cjs`.
 - Run engine commands through PowerShell.
-- Do not set `node <path> ...` as one string variable and invoke `& $var`; run direct `node <path> ...` or `& node <path> ...`.
+- Do not set `node <path> ...` as one string variable and invoke `& <cmd_var>`; run direct `node <path> ...` or `& node <path> ...`.
 - Parse JSON with ConvertFrom-Json; parse key/value output when workflow uses KEY=value raw mode.
 - No jq / bash-only constructs.
 - Accept natural-language command input; do not require an exact literal argument template.
