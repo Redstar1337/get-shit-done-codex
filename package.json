@@ -1,6 +1,6 @@
 {
   "name": "gsd-codex-cli",
-  "version": "1.20.5",
+  "version": "1.20.6",
   "description": "Codex-native package for the get-shit-done workflow with native subagent orchestration.",
   "bin": {
     "gsd-codex-cli": "bin/install-codex.js",
