@@ -12,7 +12,7 @@ const helpText = `
 ${pkg.name} v${pkg.version}
 
 Usage:
-  get-shit-done-codex [--path <target-dir>] [--help]
+  ${pkg.name} [--path <target-dir>] [--help]
 
 Options:
   --path <target-dir>   Install into this directory (defaults to current directory)
@@ -20,8 +20,8 @@ Options:
   --help, -h            Show this help message
 
 Examples:
-  npx @ahmed118glitch/get-shit-done-codex@latest --path .
-  npx @ahmed118glitch/get-shit-done-codex@latest --path ./my-project
+  npx gsd-codex-cli@latest --path .
+  npx gsd-codex-cli@latest --path ./my-project
 `;
 
 if (args.includes('--help') || args.includes('-h')) {

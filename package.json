@@ -1,8 +1,9 @@
 {
-  "name": "@ahmed118glitch/get-shit-done-codex",
+  "name": "gsd-codex-cli",
   "version": "1.20.0",
   "description": "Codex-native package for the get-shit-done workflow with native subagent orchestration.",
   "bin": {
+    "gsd-codex-cli": "bin/install-codex.js",
     "get-shit-done-codex": "bin/install-codex.js",
     "get-shit-done-cc": "bin/install.js"
   },
