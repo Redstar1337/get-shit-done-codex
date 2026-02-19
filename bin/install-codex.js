@@ -102,6 +102,6 @@ if (installGlobal) {
 }
 console.log('\nNext steps:');
 console.log('  1) Open your project in Codex');
-console.log('  2) Run prompt gsd-new-project, then gsd-discuss-phase, gsd-plan-phase, gsd-execute-phase');
-console.log('  3) If something looks off, run prompt gsd-doctor');
+console.log('  2) Run /prompts:gsd-new-project, then /prompts:gsd-discuss-phase, /prompts:gsd-plan-phase, /prompts:gsd-execute-phase');
+console.log('  3) If something looks off, run /prompts:gsd-doctor');
 console.log('  4) Use .codex/prompts/* for all GSD commands in this fork');

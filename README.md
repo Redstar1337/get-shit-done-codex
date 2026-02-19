@@ -34,11 +34,11 @@ This fork is Codex-first, but the Claude assets are kept alongside for compatibi
 
 ## Using the Prompts
 
-Open your project in Codex and run these prompts from the prompt list:
+Open your project in Codex and run these prompt commands:
 
-- `gsd-new-project`
-- `gsd-plan-phase`
-- `gsd-execute-phase`
+- `/prompts:gsd-new-project`
+- `/prompts:gsd-plan-phase`
+- `/prompts:gsd-execute-phase`
 
 All Codex prompts live in `.codex/prompts`.
 

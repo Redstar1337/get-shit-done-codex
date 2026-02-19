@@ -46,5 +46,5 @@ node <gsd-tools-path> commit "message" --files ....
 
 ## Completion output
 - Summarize key artifacts created/updated.
-- Next recommended command: `gsd-discuss-phase 1` (Codex) / `/gsd:discuss-phase 1` (Claude)
+- Next recommended command: `/prompts:gsd-discuss-phase 1` (Codex) / `/gsd:discuss-phase 1` (Claude)
 - Never recommend internal `node ... gsd-tools ...` commands to the user.

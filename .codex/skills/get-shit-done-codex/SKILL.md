@@ -19,7 +19,7 @@ Use this skill to run `gsd-*` prompts under `Codex` while preserving upstream GS
 2. Do not change source workflow logic unless necessary for Codex command compatibility.
 3. Use workspace-relative paths.
 4. Preserve step ordering and gate behavior from workflow files.
-5. User-facing guidance should recommend `gsd-*` prompts (Codex) and `/gsd:*` commands (Claude), not internal `node ... gsd-tools ...` plumbing.
+5. User-facing guidance should recommend `/prompts:gsd-*` prompts (Codex) and `/gsd:*` commands (Claude), not internal `node ... gsd-tools ...` plumbing.
 
 ## Mandatory codex translations
 - Replace each `Task(...)` with: `spawn_agent` + `wait`.

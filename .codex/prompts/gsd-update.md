@@ -34,7 +34,7 @@ Update GSD to latest version with changelog display
 - Best-effort only; do not fail if offline.
 - Check installed Codex fork version from `.codex/gsd/VERSION` (or `~/.codex/gsd/VERSION`).
 - Check latest published version with `npm view gsd-codex-cli version`.
-- If versions differ, surface: "Update available: <installed> -> <latest>. Next: gsd-update (Codex) / /gsd:update (Claude) or re-run npx gsd-codex-cli@latest."
+- If versions differ, surface: "Update available: <installed> -> <latest>. Next: /prompts:gsd-update (Codex) / /gsd:update (Claude) or re-run npx gsd-codex-cli@latest."
 
 ## Execution
 1. No positional argument is required. Read flags from command text if present.
@@ -52,5 +52,5 @@ node <gsd-tools-path> commit "message" --files ....
 
 ## Completion output
 - Summarize key artifacts created/updated.
-- Next recommended command: use the next user-facing GSD command (Codex prompt name + Claude slash command).
+- Next recommended command: use the next user-facing GSD command (`/prompts:gsd-...` for Codex + `/gsd:...` for Claude).
 - Never recommend internal `node ... gsd-tools ...` commands to the user.

@@ -38,12 +38,12 @@ Run these checks and then present a compact table: `check | status | details | f
   - `npm view gsd-codex-cli version`
 - If installed Codex fork version is known and differs from latest, surface:
   - `Update available: {installed} -> {latest}`
-  - Next: `gsd-update` (Codex) / `/gsd:update` (Claude) or re-run `npx gsd-codex-cli@latest`.
+  - Next: `/prompts:gsd-update` (Codex) / `/gsd:update` (Claude) or re-run `npx gsd-codex-cli@latest`.
 
 ## Recommended fixes (use the minimum)
 - If engine missing: `npx gsd-codex-cli@latest --path .` (or `--global`)
 - If only Claude engine exists and Codex prompts are desired in-project: `npx gsd-codex-cli@latest --path .`
-- If `.planning/` missing: run `gsd-new-project` (Codex) / `/gsd:new-project` (Claude)
+- If `.planning/` missing: run `/prompts:gsd-new-project` (Codex) / `/gsd:new-project` (Claude)
 
 ## Completion output
 - Print the table and a single “Next recommended command”:

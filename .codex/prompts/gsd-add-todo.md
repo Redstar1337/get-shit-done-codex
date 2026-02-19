@@ -46,5 +46,5 @@ node <gsd-tools-path> commit "message" --files ....
 
 ## Completion output
 - Summarize key artifacts created/updated.
-- Next recommended command: use the next user-facing GSD command (Codex prompt name + Claude slash command).
+- Next recommended command: use the next user-facing GSD command (`/prompts:gsd-...` for Codex + `/gsd:...` for Claude).
 - Never recommend internal `node ... gsd-tools ...` commands to the user.

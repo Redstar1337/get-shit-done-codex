@@ -59,5 +59,5 @@ node <gsd-tools-path> commit "message" --files ....
 
 ## Completion output
 - Summarize key artifacts created/updated.
-- Next recommended command: `gsd-verify-work <phase>` (Codex) / `/gsd:verify-work <phase>` (Claude)
+- Next recommended command: `/prompts:gsd-verify-work <phase>` (Codex) / `/gsd:verify-work <phase>` (Claude)
 - Never recommend internal `node ... gsd-tools ...` commands to the user.
