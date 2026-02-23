@@ -1,4 +1,6 @@
-# Plan: Port get-shit-done (GSD) to Codex (Windows-first)
+# Porting Notes (Codex Fork)
+
+Historical maintainer notes used to build the Codex port. End users should start with `README.md` and `docs/USER-GUIDE.md`.
 
 ## Scope and Command Policy
 

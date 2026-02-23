@@ -2,9 +2,20 @@
 
 All notable changes to GSD will be documented in this file.
 
+Note: This repository is a Codex-focused fork. Upstream release notes are preserved, and fork-specific patch releases are documented here as well.
+
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+
+## [1.20.13] - 2026-02-23
+
+### Added
+- Codex role-based GSD subagent configs in `.codex/agents/gsd-*.toml` (per-role model routing).
+- Installer now auto-registers `[agents.gsd-*]` in `.codex/config.toml` (creates if missing; appends only missing sections; supports `--global` installs).
+
+### Changed
+- Codex prompts now pass `agent_type=gsd-*` to `spawn_agent`, enabling consistent role-based routing.
 
 ## [1.20.0] - 2026-02-15
 
@@ -1272,6 +1283,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Interactive mode with checkpoints
 
 [Unreleased]: https://github.com/glittercowboy/get-shit-done/compare/v1.20.0...HEAD
+[1.20.13]: https://www.npmjs.com/package/gsd-codex-cli/v/1.20.13
 [1.20.0]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.20.0
 [1.19.2]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.19.2
 [1.19.1]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.19.1

@@ -2,6 +2,10 @@
 
 A detailed reference for workflows, troubleshooting, and configuration. For quick-start setup, see the [README](../README.md).
 
+Note on command prefixes:
+- In Codex, run commands as `/prompts:gsd-...`.
+- In Claude Code, run commands as `/gsd:...`.
+
 ---
 
 ## Table of Contents
